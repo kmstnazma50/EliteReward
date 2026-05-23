@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>Premium Offer Vault | 30 Exclusive Deals</title>
+  <meta name="description" content="Claim your exclusive offers from our premium deal vault. 30 live deals across 10 tiers. Click and collect your rewards instantly.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background: radial-gradient(circle at 20% 30%, #0a1f0a, #0a0c1a, #02040f);
+      font-family: 'Inter', system-ui, sans-serif;
+      padding: 2rem 1.5rem;
+      min-height: 100vh;
+    }
+
+    .main-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .content-area {
+      flex: 3;
+      min-width: 250px;
+    }
+
+    /* desktop sidebar - vibrant theme with green undertone */
+    .level-sidebar {
+      flex: 0.9;
+      min-width: 200px;
+      position: sticky;
+      top: 2rem;
+      align-self: flex-start;
+      background: rgba(20, 25, 35, 0.85);
+      backdrop-filter: blur(16px);
+      border-radius: 2rem;
+      padding: 1.5rem 1rem;
+      border: 1px solid rgba(251, 146, 60, 0.5);
+      height: fit-content;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    }
+
+    .level-sidebar h3 {
+      color: #ffd6a5;
+      font-size: 1.2rem;
+      text-align: center;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .level-sidebar h3 i {
+      color: #4ade80;
+    }
+
+    .triggers-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+
+    .level-btn {
+      background: linear-gradient(105deg, #1a1e32, #11152a);
+      border: 1px solid #fb923c;
+      border-radius: 60px;
+      padding: 8px 0;
+      text-align: center;
+      font-weight: 700;
+      font-size: 0.75rem;
+      color: #ffdead;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 5px;
+    }
+
+    .level-btn i {
+      font-size: 0.75rem;
+      color: #4ade80;
+    }
+
+    .level-btn:hover {
+      background: linear-gradient(105deg, #2a2f4a, #1a1f38);
+      border-color: #f97316;
+      transform: translateY(-2px);
+    }
+
+    .level-btn.active {
+      background: linear-gradient(105deg, #ea580c, #c2410c);
+      border-color: #fdba74;
+      color: white;
+    }
+
+    .level-btn.active i {
+      color: #fef3c7;
+    }
+
+    .hero {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero h1 {
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #fb923c, #f97316, #4ade80, #fdba74);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      letter-spacing: -0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+
+    /* Responsive title - stays in one line */
+    @media (max-width: 550px) {
+      .hero h1 {
+        font-size: 1.6rem;
+        gap: 8px;
+      }
+      .hero h1 i {
+        font-size: 1.4rem;
+      }
+    }
+    @media (max-width: 400px) {
+      .hero h1 {
+        font-size: 1.3rem;
+        gap: 6px;
+      }
+      .hero h1 i {
+        font-size: 1.1rem;
+      }
+    }
+
+    .hero h1 i {
+      background: none;
+      -webkit-text-fill-color: #f97316;
+      font-size: 2rem;
+    }
+
+    /* description moved to bottom */
+    .bottom-description {
+      text-align: center;
+      margin: 1rem 0 1.5rem 0;
+      color: #86efac;
+      font-size: 0.9rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .stats-card {
+      background: rgba(10, 14, 30, 0.7);
+      backdrop-filter: blur(12px);
+      border-radius: 2rem;
+      padding: 1rem 1.8rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 2rem;
+      margin-bottom: 0;
+      border: 1px solid rgba(74, 222, 128, 0.4);
+    }
+
+    .total-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: #fcd9b6;
+      font-weight: 600;
+    }
+
+    .total-box i {
+      font-size: 2rem;
+      color: #4ade80;
+    }
+
+    .total-number {
+      background: #0a0e20;
+      padding: 6px 20px;
+      border-radius: 50px;
+      font-size: 2rem;
+      font-weight: 800;
+      color: #fbbf24;
+      font-family: monospace;
+      letter-spacing: 2px;
+      border: 1px solid #4ade80;
+    }
+
+    .legend {
+      display: flex;
+      gap: 20px;
+    }
+
+    .legend span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.85rem;
+      color: #cbd5e1;
+    }
+
+    .dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: #2d3a5e;
+    }
+
+    .dot.active {
+      background: #10b981;
+      box-shadow: 0 0 6px #34d399;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 1.5rem 0 1rem 0;
+      padding-bottom: 6px;
+      border-bottom: 2px solid rgba(251, 146, 60, 0.5);
+    }
+
+    .section-title i {
+      font-size: 1.5rem;
+      color: #4ade80;
+    }
+
+    .section-title h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #fee3c0;
+    }
+
+    .badge {
+      background: #f97316;
+      padding: 2px 12px;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #0a0a1a;
+    }
+
+    .btn-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      gap: 14px;
+      max-height: 50vh;
+      overflow-y: auto;
+      padding-right: 8px;
+    }
+
+    .btn-grid::-webkit-scrollbar {
+      width: 6px;
+    }
+    .btn-grid::-webkit-scrollbar-track {
+      background: #1e253e;
+      border-radius: 10px;
+    }
+    .btn-grid::-webkit-scrollbar-thumb {
+      background: #4ade80;
+      border-radius: 10px;
+    }
+
+    .offer-btn {
+      background: linear-gradient(105deg, #13182e, #0c1022);
+      border: 1px solid #3b3f66;
+      border-radius: 60px;
+      padding: 12px 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      color: #e2e8f0;
+      font-weight: 600;
+      font-size: 0.9rem;
+      cursor: pointer;
+    }
+
+    .offer-btn:hover {
+      transform: translateY(-3px);
+      background: linear-gradient(105deg, #1c2340, #12172e);
+      border-color: #4ade80;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.4);
+    }
+
+    /* Disabled button style - Hard Lock */
+    .offer-btn.disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      pointer-events: none;
+      background: linear-gradient(105deg, #1a2a1a, #0f1f0f);
+      border-color: #4a6a4a;
+      transform: none;
+    }
+    .offer-btn.disabled:hover {
+      transform: none;
+      box-shadow: none;
+    }
+    .offer-btn.disabled .click-count {
+      background: #1a3a1a;
+      color: #6a9e6a;
+    }
+
+    .btn-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      overflow: hidden;
+    }
+    .btn-left i {
+      font-size: 1.2rem;
+      color: #f97316;
+      min-width: 28px;
+      text-align: center;
+    }
+    .btn-left span {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .click-count {
+      background: #00000055;
+      border-radius: 40px;
+      padding: 3px 12px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: #4ade80;
+      border: 0.5px solid #4ade80;
+      font-family: monospace;
+    }
+    .offer-btn.clicked {
+      background: linear-gradient(105deg, #0f3b2a, #0a261c);
+      border-color: #10b981;
+    }
+    .offer-btn.clicked .click-count {
+      background: #064e3b;
+      color: #facc15;
+    }
+
+    .reset-btn {
+      background: rgba(249, 115, 22, 0.15);
+      border: 1px solid #f97316;
+      border-radius: 50px;
+      padding: 6px 18px;
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #fdba74;
+      cursor: pointer;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .reset-btn:hover {
+      background: #f9731630;
+      color: #ffffff;
+      border-color: #4ade80;
+    }
+
+    footer {
+      margin-top: 1.5rem;
+      text-align: center;
+      color: #6b9e6b;
+      font-size: 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+
+    @media (max-width: 850px) {
+      .main-container { flex-direction: column; }
+      .level-sidebar { display: none; }
+      .mobile-tier-bar {
+        display: block;
+        background: rgba(20, 25, 35, 0.85);
+        backdrop-filter: blur(16px);
+        border-radius: 1.5rem;
+        padding: 1rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid rgba(251, 146, 60, 0.5);
+      }
+      .mobile-tier-bar h3 {
+        color: #ffd6a5;
+        font-size: 1rem;
+        text-align: center;
+        margin-bottom: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+      }
+      .mobile-triggers {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+      }
+      .mobile-tier-btn {
+        background: linear-gradient(105deg, #1a1e32, #11152a);
+        border: 1px solid #fb923c;
+        border-radius: 60px;
+        padding: 6px 0;
+        font-weight: 700;
+        font-size: 0.65rem;
+        color: #ffdead;
+        cursor: pointer;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 4px;
+      }
+      .mobile-tier-btn i { font-size: 0.65rem; color: #4ade80; }
+      .mobile-tier-btn.active {
+        background: linear-gradient(105deg, #ea580c, #c2410c);
+        border-color: #fdba74;
+        color: white;
+      }
+      .btn-grid { max-height: 45vh; }
+      .stats-card { margin-top: 1.5rem; }
+    }
+    @media (min-width: 851px) {
+      .mobile-tier-bar { display: none; }
+    }
+  </style>
+</head>
+<body>
+<div class="main-container">
+  <div class="content-area">
+    <div class="hero">
+      <h1><i class="fas fa-crown"></i> PREMIUM OFFER VAULT <i class="fas fa-gem"></i></h1>
+    </div>
+
+    <div class="mobile-tier-bar" id="mobileTierBar">
+      <h3><i class="fas fa-layer-group"></i> Select Your Tier</h3>
+      <div class="mobile-triggers" id="mobileTriggers"></div>
+    </div>
+
+    <div class="section-title" id="dynamicSectionTitle">
+      <i class="fas fa-chart-simple"></i>
+      <h2 id="levelName">Tier 1 · Starter Pack</h2>
+      <div class="badge" id="levelBadge">3 Offers</div>
+    </div>
+    <div id="offersGrid" class="btn-grid"></div>
+
+    <div class="stats-card">
+      <div class="total-box">
+        <i class="fas fa-chart-line"></i>
+        <span>Total Clicks</span>
+        <div class="total-number" id="totalClicks">0</div>
+      </div>
+      <div class="legend">
+        <span><i class="dot"></i> Pending</span>
+        <span><i class="dot active"></i> Claimed</span>
+      </div>
+    </div>
+
+    <div class="bottom-description">
+      <i class="fas fa-shield-alt"></i> Unlock exclusive rewards from our verified collection. Each tier contains hand-picked premium offers ready for you.
+    </div>
+
+    <footer>
+      <span><i class="far fa-clock"></i> 30 Verified Offers · 10 Exclusive Tiers · Instant Access</span>
+      <div class="reset-btn" id="resetAllBtn"><i class="fas fa-trash-alt"></i> Reset Counters</div>
+    </footer>
+  </div>
+
+  <div class="level-sidebar">
+    <h3><i class="fas fa-layer-group"></i> Select Your Tier</h3>
+    <div class="triggers-grid" id="desktopTriggers"></div>
+  </div>
+</div>
+
+<script>
+  // ==================== NEW 30 LINKS (watchingprefecture.com) ====================
+  const ALL_LINKS = [
+    "https://watchingprefecture.com/g4eivvig9f?key=176aba3909916d916dd25dc79bab61a3",
+    "https://watchingprefecture.com/zc3j1ch6t7?key=dab11534c9b59fac364be71db19db7ab",
+    "https://watchingprefecture.com/j131x4rsc?key=09e6aa05c97170d854252f3e97535a67",
+    "https://watchingprefecture.com/uszwzr3f?key=68401402c82b6f9c8b6604cb3cd124fb",
+    "https://watchingprefecture.com/xwb4y4a7a?key=3f3e36bb1fae4b4a864f5dca28bcc6fc",
+    "https://watchingprefecture.com/fkeajw53v?key=14280a23b73c65bde390a1fc86b236d0",
+    "https://watchingprefecture.com/irci9ynz?key=ff9581debf4878d668a0dacd26b878d7",
+    "https://watchingprefecture.com/axf3mu18v?key=f4bd6e328c5a03ccfa12e3da94ec6c27",
+    "https://watchingprefecture.com/fwu6h1x0?key=0f4b6a6811ed51c0162e2b71f6ea9127",
+    "https://watchingprefecture.com/wrwjtuymvg?key=7796981c438c2c7a41a14de742eaf3c5",
+    "https://watchingprefecture.com/j708bec2z?key=9338a413352dd62fe54f99384162c542",
+    "https://watchingprefecture.com/r3z7shdka?key=0f1e1ea88e21a075c98cd46e460d85d8",
+    "https://watchingprefecture.com/g4q9czkaiv?key=3a4a1c1624720378dd42d90b083c7ede",
+    "https://watchingprefecture.com/m9m6qets1?key=0f4e9eaa4bbe11c9f173716ecc79729b",
+    "https://watchingprefecture.com/uh0rc358y5?key=a15256afdd474b58e692f9f01299fe9e",
+    "https://watchingprefecture.com/x94j7waq?key=b3bda5aa1bbf63cd935b4179d8592518",
+    "https://watchingprefecture.com/vm1mh6qi7?key=00fbe2d20384ad98ed6c82f5f0cec781",
+    "https://watchingprefecture.com/pgyzdfjd?key=b9438de33dfdbed7d2fb86cd578bed22",
+    "https://watchingprefecture.com/qr5i28sx91?key=f0614d5336f86a0bcad8230fed697237",
+    "https://watchingprefecture.com/xv2vi2u9tz?key=e240ab2f5e26924ccccb885154358018",
+    "https://watchingprefecture.com/v1ua0rw4g?key=c38b9e807411ce168945d8d578d07b42",
+    "https://watchingprefecture.com/txm3kmegx?key=a81851fd567fae5905b155a89ebf8b24",
+    "https://watchingprefecture.com/iua45z5j7?key=e665a3e0b44f1ee7dffbdcc1a3c69962",
+    "https://watchingprefecture.com/iumwqgff?key=b67afda0b2593607dd0e50e843dcd968",
+    "https://watchingprefecture.com/n7uwkbxhi4?key=9169cab3cc21dcdb32b4a1dae20fae77",
+    "https://watchingprefecture.com/k8u6p0hrjk?key=fe2c00a8b35045a561f6ee4bd78ec525",
+    "https://watchingprefecture.com/rw0sz7jie?key=772aaa6675399abde98f78c5b11c3de0",
+    "https://watchingprefecture.com/aenrfnzwq6?key=b47c73ca36fbf414c2c5a973707ed543",
+    "https://watchingprefecture.com/cdptge6ss?key=431a34c1f634937b91ec9cd701d5c419",
+    "https://watchingprefecture.com/yr86xe8x?key=05b62d97d7069048ddac424852ff8e2a"
+  ];
+
+  // Professional offer names (same as before, unchanged)
+  const OFFER_NAMES = [
+    "Premium Access", "Elite Reward", "Gold Member", "Platinum Deal", "Diamond Pack",
+    "Exclusive Drop", "Limited Edition", "Founders Pack", "Early Bonus", "Weekend Special",
+    "Flash Reward", "Midnight Deal", "Sunrise Pack", "Twilight Offer", "Summit Bundle",
+    "Horizon Pack", "Legacy Deal", "Infinity Access", "Prime Selection", "Ultimate Vault",
+    "Signature Pack", "Collector's Edition", "Master Tier", "Legendary Chest", "Mythic Bundle",
+    "Rare Discovery", "Instant Reward", "Quick Claim", "Direct Access", "Verified Deal"
+  ];
+
+  const OFFER_ICONS = [
+    "crown", "gem", "star", "medal", "trophy",
+    "gift", "box", "bag-shopping", "wallet", "coins",
+    "bolt", "fire", "rocket", "cloud-sun", "moon",
+    "compass", "map", "key", "lock", "shield",
+    "circle-check", "badge-check", "hand-peace", "thumbs-up", "award",
+    "diamond", "ring", "clock", "calendar", "bell"
+  ];
+
+  function getOfferName(idx) {
+    return OFFER_NAMES[idx % OFFER_NAMES.length];
+  }
+  function getOfferIcon(idx) {
+    return OFFER_ICONS[idx % OFFER_ICONS.length];
+  }
+
+  // 10 tiers, each with 3 offers
+  const TIER_OFFERS = {};
+  for (let i = 0; i < 10; i++) {
+    TIER_OFFERS[i+1] = [];
+    for (let j = 0; j < 3; j++) {
+      const linkIdx = i * 3 + j;
+      TIER_OFFERS[i+1].push({
+        name: getOfferName(linkIdx),
+        icon: getOfferIcon(linkIdx),
+        link: ALL_LINKS[linkIdx]
+      });
+    }
+  }
+
+  const TOTAL_OFFERS = 30;
+  let clickCounts = new Array(TOTAL_OFFERS).fill(0);
+  let claimedStatus = new Array(TOTAL_OFFERS).fill(false); // Hard lock tracker
+  const STORAGE_KEY = "premiumOfferVaultHardLock";
+  const CLAIMED_KEY = "premiumOfferClaimedStatus";
+
+  function getGlobalIndex(tier, localIdx) {
+    return (tier-1) * 3 + localIdx;
+  }
+
+  function loadCounts() {
+    const saved = localStorage.getItem(STORAGE_KEY);
+    if (saved) {
+      try {
+        let arr = JSON.parse(saved);
+        if (arr.length === TOTAL_OFFERS) clickCounts = arr;
+      } catch(e) {}
+    }
+    const savedClaimed = localStorage.getItem(CLAIMED_KEY);
+    if (savedClaimed) {
+      try {
+        let arr = JSON.parse(savedClaimed);
+        if (arr.length === TOTAL_OFFERS) claimedStatus = arr;
+      } catch(e) {}
+    }
+  }
+  function saveCounts() { 
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(clickCounts));
+    localStorage.setItem(CLAIMED_KEY, JSON.stringify(claimedStatus));
+  }
+  function updateTotalDisplay() {
+    const total = clickCounts.reduce((a,b)=>a+b,0);
+    document.getElementById("totalClicks").innerText = total;
+  }
+
+  let currentTier = 1;
+
+  function renderCurrentTier() {
+    const grid = document.getElementById("offersGrid");
+    grid.innerHTML = "";
+    const offers = TIER_OFFERS[currentTier];
+    const levelTitle = document.getElementById("levelName");
+    const levelBadge = document.getElementById("levelBadge");
+    const tierNames = ["Starter Pack", "Bronze Tier", "Silver Tier", "Gold Tier", "Platinum Tier", "Emerald Tier", "Ruby Tier", "Sapphire Tier", "Diamond Tier", "Ultimate Vault"];
+    levelTitle.innerText = `Tier ${currentTier} · ${tierNames[currentTier-1]}`;
+    levelBadge.innerText = "3 Offers";
+
+    offers.forEach((offer, localIdx) => {
+      const globalIdx = getGlobalIndex(currentTier, localIdx);
+      const count = clickCounts[globalIdx];
+      const isClaimed = claimedStatus[globalIdx];
+      const isClicked = count > 0;
+      
+      const btn = document.createElement("a");
+      btn.href = isClaimed ? "javascript:void(0);" : offer.link;
+      btn.target = isClaimed ? "" : "_blank";
+      btn.rel = "noopener noreferrer";
+      btn.className = "offer-btn" + (isClicked ? " clicked" : "") + (isClaimed ? " disabled" : "");
+      btn.setAttribute("data-global-idx", globalIdx);
+      
+      btn.innerHTML = `<div class="btn-left"><i class="fas fa-${offer.icon}"></i><span>${offer.name}</span></div><div class="click-count">${count}</div>`;
+      
+      // Only add click handler if not already claimed
+      if (!isClaimed) {
+        btn.addEventListener("click", (e) => {
+          e.stopPropagation();
+          e.preventDefault();
+          
+          // Hard lock: if already claimed, do nothing
+          if (claimedStatus[globalIdx]) return false;
+          
+          // Mark as claimed (Hard Lock)
+          claimedStatus[globalIdx] = true;
+          clickCounts[globalIdx] += 1;
+          saveCounts();
+          updateTotalDisplay();
+          renderCurrentTier(); // re-render with disabled button
+          
+          // Open link after marking claimed
+          window.open(offer.link, "_blank");
+          return false;
+        });
+      } else {
+        btn.style.cursor = "not-allowed";
+        btn.onclick = (e) => { e.preventDefault(); return false; };
+      }
+      
+      grid.appendChild(btn);
+    });
+  }
+
+  function setActiveTier(tier) {
+    currentTier = tier;
+    document.querySelectorAll(".level-btn").forEach(btn => {
+      if (parseInt(btn.getAttribute("data-level")) === tier) btn.classList.add("active");
+      else btn.classList.remove("active");
+    });
+    document.querySelectorAll(".mobile-tier-btn").forEach(btn => {
+      if (parseInt(btn.getAttribute("data-level")) === tier) btn.classList.add("active");
+      else btn.classList.remove("active");
+    });
+    renderCurrentTier();
+  }
+
+  function resetCounters() {
+    for (let i=0; i<TOTAL_OFFERS; i++) {
+      clickCounts[i] = 0;
+      claimedStatus[i] = false;
+    }
+    saveCounts();
+    updateTotalDisplay();
+    renderCurrentTier();
+  }
+
+  function buildTriggers() {
+    const desktopContainer = document.getElementById("desktopTriggers");
+    const mobileContainer = document.getElementById("mobileTriggers");
+    desktopContainer.innerHTML = "";
+    mobileContainer.innerHTML = "";
+    for (let i=1; i<=10; i++) {
+      const dBtn = document.createElement("div");
+      dBtn.className = "level-btn";
+      dBtn.setAttribute("data-level", i);
+      dBtn.innerHTML = `<i class="fas fa-tag"></i> ${i}`;
+      dBtn.addEventListener("click", () => setActiveTier(i));
+      desktopContainer.appendChild(dBtn);
+      const mBtn = document.createElement("div");
+      mBtn.className = "mobile-tier-btn";
+      mBtn.setAttribute("data-level", i);
+      mBtn.innerHTML = `<i class="fas fa-tag"></i> ${i}`;
+      mBtn.addEventListener("click", () => setActiveTier(i));
+      mobileContainer.appendChild(mBtn);
+    }
+  }
+
+  document.getElementById("resetAllBtn").addEventListener("click", resetCounters);
+  loadCounts();
+  buildTriggers();
+  setActiveTier(1);
+  updateTotalDisplay();
+</script>
+</body>
+</html>
